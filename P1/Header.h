@@ -111,7 +111,7 @@ public:
 	}
 	void startMess(ostream& os)
 	{
-		os << "Nhap n, arr[0],...,arr[n-1]: ";
+		os << "Moi nhap mang: " << endl;
 	}
 	void process() {
 		if (sa != NULL)
