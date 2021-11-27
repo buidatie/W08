@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+
 using namespace std;
 
 class ProgramFrame
@@ -19,13 +20,13 @@ public:
 	void run(istream& is, ostream& os);
 };
 
-class ArraySort
+class SortArray
 {
 public:
 	virtual void process(vector <float>& a) = 0;
 };
 
-class SelectionS : public ArraySort
+class SelectionS : public SortArray
 {
 public:
 	void process(vector <float>& a)
@@ -45,7 +46,7 @@ public:
 	}
 };
 
-class InsertionS : public ArraySort
+class InsertionS : public SortArray
 {
 public:
 	void process(vector < float>& a)
@@ -65,7 +66,7 @@ public:
 	}
 };
 
-class Interchange : public ArraySort
+class Interchange : public SortArray
 {
 public:
 	void process(vector <float >& a)
@@ -79,14 +80,14 @@ public:
 
 class SATest : public ProgramFrame
 {
-	ArraySort* alg;
+	SortArray* sa;
 	vector <float> Data;
 	int n;
 public:
-	SATest() { alg = NULL; }
-	SATest(ArraySort* arrS) {
+	SATest() { sa = NULL; }
+	SATest(SortArray* arrS) {
 		//*alg = new SATest;
-		alg = arrS;
+		sa = arrS;
 	}
 
 	void input(istream& is) {
@@ -113,8 +114,8 @@ public:
 		os << "Nhap n, arr[0],...,arr[n-1]: ";
 	}
 	void process() {
-		if (alg != NULL)
-			alg->process(Data);
+		if (sa != NULL)
+			sa->process(Data);
 	}
 };
 
